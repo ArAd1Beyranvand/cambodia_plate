@@ -30,28 +30,28 @@ void main() {
         'private': (
           CambodiaPlates.private,
           CambodiaThemes.private,
-          '3 A 1 8 5 1',
+          '3 A 1851',
         ),
         'private_long': (
           CambodiaPlates.privateLong,
           CambodiaThemes.privateLong,
-          '2 A B 3 1 4 6',
+          '2 AB 3146',
         ),
-        'police': (CambodiaPlates.police, CambodiaThemes.police, '1 1 0 7 7'),
+        'police': (CambodiaPlates.police, CambodiaThemes.police, '1 1077'),
         'diplomatic': (
           CambodiaPlates.diplomatic,
           CambodiaThemes.diplomatic,
-          'C D 8 8 0 0 3',
+          'CD 88 003',
         ),
         'non_governmental': (
           CambodiaPlates.nonGovernmental,
           CambodiaThemes.ngo,
-          'O N G 2 0 0 2 8 4 9',
+          'ONG 200 2 849',
         ),
         'international_motorcycle': (
           CambodiaPlates.internationalMotorcycle,
           CambodiaThemes.internationalMotorcycle,
-          '0 1 0 0 7',
+          '01 007',
         ),
       };
 

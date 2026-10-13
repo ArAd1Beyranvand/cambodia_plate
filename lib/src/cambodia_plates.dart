@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
@@ -166,21 +168,19 @@ class _Builder {
     double pitch,
     _Row row,
   ) {
-    final start = slots.length;
-    slots.addAll(
-      plateRegister(
+    groups.add(PlateTextGroup(<int>[slots.length], key: key));
+    slots.add(
+      PlateSlot(
         alphabet: alphabet,
-        count: count,
-        left: firstCx - pitch / 2,
-        top: row.cy - row.box / 2,
-        width: pitch,
-        height: row.box,
+        box: PlateBox(
+          firstCx - pitch / 2,
+          row.cy - row.box / 2,
+          count * pitch,
+          row.box,
+        ),
+        length: count,
+        spacing: max(0, pitch - 0.6 * 0.72 * row.box),
       ),
-    );
-    groups.add(
-      PlateTextGroup(<int>[
-        for (var i = start; i < slots.length; i++) i,
-      ], key: key),
     );
   }
 
