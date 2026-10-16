@@ -1,21 +1,10 @@
 import 'package:flutter/foundation.dart';
 
-/// Which of the three layouts a category is printed in. Closed: the library
-/// owns the layouts; new categories are new [CambodiaCategory] values.
-enum CambodiaDesign {
-  /// Province name over a class digit, letters and four digits, the English
-  /// name under a rule.
-  captioned,
+/// The layout a category is printed in. Closed: new categories are new
+/// [CambodiaCategory] values.
+enum CambodiaDesign { captioned, long, stacked }
 
-  /// The long 14 × 50 cm plate: the names left of the number, not above it.
-  long,
-
-  /// Two rows of registers, no province: the diplomatic and international
-  /// organisation plates.
-  stacked,
-}
-
-/// A plate category: its design and the few things that vary within one.
+/// A plate category: its design and what varies within one.
 @immutable
 class CambodiaCategory {
   const CambodiaCategory._(
@@ -29,16 +18,14 @@ class CambodiaCategory {
   /// Stable identifier, used in spec ids.
   final String id;
 
-  /// English name, as the article gives it.
   final String name;
 
   final CambodiaDesign design;
 
-  /// Fixed captions that replace the province's names, as on the police
-  /// plate. Empty for the plates that print their province.
+  /// Fixed captions replacing the province's names. Empty when the plate
+  /// prints its province.
   final String khmer, english;
 
-  /// Whether the plate prints the province it is registered in.
   bool get hasProvince => khmer.isEmpty && design != CambodiaDesign.stacked;
 
   static const CambodiaCategory private = CambodiaCategory._(

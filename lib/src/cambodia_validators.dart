@@ -1,8 +1,7 @@
 import 'package:plate_core/plate_core.dart';
 
-/// The first numbers the article's class table gives: motorcycle 1, private
-/// car 2, private car over seven seats 3, agricultural 4, engineering 5,
-/// truck trailer 7, special 9.
+/// Issued class digits: motorcycle 1, private car 2, large private car 3,
+/// agricultural 4, engineering 5, truck trailer 7, special 9.
 const Set<String> cambodiaClassDigits = <String>{
   '1',
   '2',
@@ -13,9 +12,8 @@ const Set<String> cambodiaClassDigits = <String>{
   '9',
 };
 
-/// Judges a captioned or long plate: a class digit, the letters when the
-/// plate has them (one or two, per the article), and four digits. Reports,
-/// never bars a keystroke.
+/// Judges a captioned or long plate: class digit, one or two letters when the
+/// plate has them, four digits. Reports, never bars a keystroke.
 class CambodiaValidator extends GatedPlateValidator {
   const CambodiaValidator();
 
@@ -45,10 +43,9 @@ class CambodiaValidator extends GatedPlateValidator {
   }
 }
 
-/// Judges a stacked plate by the registers its spec has: `CD` with a
-/// two-digit mission and three digits; `ONG` with a three-digit organisation,
-/// a class digit and three digits; or a two-digit code and three digits on
-/// the motorcycle plate.
+/// Judges a stacked plate by the registers its spec has: `CD` + two-digit
+/// mission; `ONG` + three-digit organisation and class digit; or a two-digit
+/// code on the motorcycle plate; each with a three-digit serial.
 class CambodiaStackedValidator extends GatedPlateValidator {
   const CambodiaStackedValidator();
 
@@ -61,12 +58,9 @@ class CambodiaStackedValidator extends GatedPlateValidator {
 
   @override
   PlateValidation judge(PlateEntry entry) {
-    final bool hasPrefix = entry.spec.indicesOfGroup('prefix').isNotEmpty;
-    if (hasPrefix) {
-      final String prefix = entry.group('prefix');
-      if (prefix != 'CD' && prefix != 'ONG') {
-        return const PlateValidation.invalid(reasonPrefix);
-      }
+    if (entry.spec.indicesOfGroup('prefix').isNotEmpty &&
+        !const <String>{'CD', 'ONG'}.contains(entry.group('prefix'))) {
+      return const PlateValidation.invalid(reasonPrefix);
     }
     for (final String key in <String>['mission', 'org', 'code']) {
       if (entry.spec.indicesOfGroup(key).isNotEmpty &&

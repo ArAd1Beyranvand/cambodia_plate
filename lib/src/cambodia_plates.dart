@@ -10,14 +10,10 @@ import 'cambodia_provinces.dart';
 import 'cambodia_themes.dart';
 import 'cambodia_usage.dart';
 
-/// Where the ink sits on the current Cambodian plates, in plate units.
-///
-/// Every reference is a photograph, flattened to 520×275 by the offline stage
-/// (platekit `photos`) and measured by projecting the ink onto each axis. The
-/// short plates use 520×275 (aspect 1.89: the photos measure 1.89–2.01, the
-/// article's 16 × 32 cm is 2.0). The long plate's reference was warped to the
-/// same 520×275, so its y values below are scaled by 146/275 into a 520×146
-/// canvas (aspect 3.56, the article's 14 × 50 cm).
+/// Ink placement in plate units. Reference photographs are flattened to
+/// 520×275 (aspect 1.89; photos measure 1.89–2.01) and measured by projecting
+/// ink onto each axis. The long plate's reference was warped to the same
+/// size, so its y values are scaled by 146/275 into a 520×146 canvas.
 ///
 /// Measured ink, as target for the goldens:
 ///
@@ -37,14 +33,12 @@ import 'cambodia_usage.dart';
 /// * International motorcycle: top row y 27–128, cells 228.5 and 308; bottom
 ///   row y 142.5–244.5, cells 158, 261.5, 366.
 ///
-/// The plates' typeface is condensed — a private serial digit is 52 wide and
-/// 136 tall — so a normal face's digit at the measured pitch is limited by
-/// the cell width, not its height. Every serial box below is therefore about
-/// twice its pitch (the widest the glyph can grow before it is squeezed), and
-/// the rendered ink is 60–80% of the reference height; a bigger box cannot
-/// help. Khmer text is sized by height (its stacked marks fix the height); a
-/// normal Khmer face runs narrower than the plates' wide one, so the names
-/// ink short of the measured width. Both are estimates until goldens exist.
+/// The plates' typeface is condensed (a private serial digit is 52 wide, 136
+/// tall), so a normal face at the measured pitch is limited by cell width, not
+/// height. Each serial box is about twice its pitch, the widest a glyph grows
+/// before being squeezed; ink is 60–80% of the reference height and a bigger
+/// box cannot help. Khmer text is sized by height (stacked marks fix it) and a
+/// normal Khmer face runs narrower, so names ink short of the measured width.
 abstract final class _Layout {
   static const double width = 520, height = 275;
   static const double longHeight = 146;
@@ -108,8 +102,8 @@ abstract final class _Layout {
   static const double ngoDashCx = 180;
 }
 
-/// A measured captioned layout: where the names, the rule and the number's
-/// cells sit. [lettersCx] is unused (0) when the plate has no letters.
+/// Names, rule and number cells of a captioned plate. [lettersCx] is 0 when
+/// the plate has no letters.
 class _Captioned {
   const _Captioned({
     required this.khmerCx,
@@ -132,20 +126,16 @@ class _Captioned {
   final double khmerCx, khmerCy, englishCx, englishCy;
   final double cy, box, classCx, lettersCx, markCx, serialCx, pitch;
 
-  /// The class digit's cell width. It defaults to [pitch], but the police
-  /// plate's serial pitch is wider than the room the measured class digit has
-  /// at the plate's left edge, so that plate narrows it.
+  /// Class cell width; narrowed on the police plate, whose serial pitch
+  /// exceeds the room at the left edge.
   final double classPitch;
 
-  /// The serial cells' width. [pitch] is the measured centre-to-centre
-  /// spacing, which the interior cells can take in full; on the police plate
-  /// the last cell would then run 4 units past the right edge, so the cell is
-  /// narrowed while every measured centre stays put.
+  /// Serial cell width. On the police plate the last cell would overrun the
+  /// right edge by 4 units at [pitch], so cells narrow while centres stay.
   final double serialPitch;
   final PlateBox rule;
 }
 
-/// The vertical extent of one stacked row: centre and slot height.
 class _Row {
   const _Row({required this.cy, required this.box});
 
@@ -205,28 +195,25 @@ class _Builder {
 
 /// Cambodia's licence plates: three designs, six categories.
 ///
-/// * Captioned — the province's Khmer name over a class digit, a letter and
-///   four digits, a rule, and the English name. Groups `class`, `letters`,
-///   `serial`; the police plate has no `letters`.
-/// * Long — the same registers on the 14 × 50 cm plate, names on the left.
-///   Groups `class`, `letters` (two), `serial`.
+/// * Captioned: Khmer name, then class digit, letter and four digits, a rule
+///   and the English name. Groups `class`, `letters`, `serial`; the police
+///   plate has no `letters`.
+/// * Long: the same registers with names on the left. Groups `class`,
+///   `letters` (two), `serial`.
 /// * Stacked — two rows, no province. Corps diplomatique: `prefix` (CD),
 ///   `mission`, `serial`. Non-governmental: `prefix` (ONG), `org`, `class`,
 ///   `serial`. International motorcycle: `code`, `serial`.
 ///
 /// Pair each with its theme in [themeOf].
 ///
-/// Not implemented, because the article gives a colour only in words and
-/// shows no plate to sample: the class-3 blue, agricultural (green),
-/// engineering (orange) and trailer plates, the royal plate (yellow on blue)
-/// and the numbered state plates (រដ្ឋ-01 …). The flag is not printed on any
-/// photographed plate, so no icon is placed. The hologram stickers on the
-/// photographs are not artwork. The article lists nothing Israel-specific.
+/// Not implemented, for want of a plate to sample: the class-3 blue,
+/// agricultural, engineering and trailer plates, the royal plate and the
+/// numbered state plates (រដ្ឋ-01 …). No flag is placed; none is printed on a
+/// photographed plate.
 abstract final class CambodiaPlates {
   static final Map<String, PlateSpec> _cache = <String, PlateSpec>{};
 
-  /// [province] is printed on the plates that print one and ignored by the
-  /// rest.
+  /// [province] is ignored by categories that print none.
   static PlateSpec of(
     CambodiaCategory category, {
     CambodiaProvince province = CambodiaProvince.phnomPenh,
@@ -258,7 +245,7 @@ abstract final class CambodiaPlates {
   static PlateSpec get internationalMotorcycle =>
       of(CambodiaCategory.internationalMotorcycle);
 
-  /// Every category, province plates registered in Phnom Penh.
+  /// Every category; province plates are registered in Phnom Penh.
   static List<PlateSpec> get all => <PlateSpec>[
     for (final c in CambodiaCategory.values) of(c),
   ];
@@ -289,7 +276,14 @@ abstract final class CambodiaPlates {
     if (!police) {
       b.run('letters', CambodiaAlphabets.letters, 1, l.lettersCx, l.pitch, row);
     }
-    b.run('serial', CambodiaAlphabets.digits, 4, l.serialCx, l.serialPitch, row);
+    b.run(
+      'serial',
+      CambodiaAlphabets.digits,
+      4,
+      l.serialCx,
+      l.serialPitch,
+      row,
+    );
     b.text(police ? '·' : '-', l.markCx, l.cy, l.pitch / 2, l.box, l.box);
     b.text(
       category.khmer.isEmpty ? province.khmer : category.khmer,

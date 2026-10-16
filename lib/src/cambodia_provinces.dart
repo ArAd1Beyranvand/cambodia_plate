@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-/// A registering province: the two names printed on a private plate.
-///
-/// Both names are the article's "Name on plate" table. The Khmer one is
-/// printed across the top and the English one, in capitals, under the rule.
+/// A registering province: the Khmer name printed across the top of a private
+/// plate and the capitalised English name under the rule.
 @immutable
 class CambodiaProvince {
   const CambodiaProvince._(this.id, this.name, this.khmer, this.english);
@@ -11,14 +9,9 @@ class CambodiaProvince {
   /// Stable identifier, used in spec ids.
   final String id;
 
-  /// English name as the article spells it.
   final String name;
 
-  /// The Khmer name on the plate.
-  final String khmer;
-
-  /// The English name on the plate.
-  final String english;
+  final String khmer, english;
 
   static const CambodiaProvince banteayMeanchey = CambodiaProvince._(
     'banteay_meanchey',
