@@ -22,7 +22,7 @@ abstract final class CambodiaColors {
   /// English province name under the rule, same photo as [blue]: `F45C64`.
   static const Color provinceRed = Color(0xFFF45C64);
 
-  /// Corps diplomatique field. `CD_plate_Cambodia`: `B08406`.
+  /// Diplomatic field. `CD_plate_Cambodia`: `B08406`.
   static const Color mustard = Color(0xFFB08406);
 
   static const Color darkBlue = Color(0xFF1C3361);

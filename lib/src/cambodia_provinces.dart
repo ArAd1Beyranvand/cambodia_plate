@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 class CambodiaProvince {
   const CambodiaProvince._(this.id, this.name, this.khmer, this.english);
 
-  /// Stable identifier, used in spec ids.
   final String id;
 
   final String name;

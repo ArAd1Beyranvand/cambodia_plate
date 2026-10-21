@@ -15,7 +15,6 @@ class CambodiaCategory {
     this.english = '',
   });
 
-  /// Stable identifier, used in spec ids.
   final String id;
 
   final String name;

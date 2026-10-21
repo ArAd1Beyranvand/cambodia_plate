@@ -142,14 +142,12 @@ class _Row {
   final double cy, box;
 }
 
-/// Accumulates one spec's slots, groups and printed marks.
 class _Builder {
   final List<PlateSlot> slots = <PlateSlot>[];
   final List<PlateTextGroup> groups = <PlateTextGroup>[];
   final List<PlateLabel> labels = <PlateLabel>[];
   final List<PlateRule> rules = <PlateRule>[];
 
-  /// [count] cells centred from [firstCx] at [pitch].
   void run(
     String key,
     PlateAlphabet alphabet,
@@ -174,7 +172,6 @@ class _Builder {
     );
   }
 
-  /// Printed text centred on ([cx], [cy]).
   void text(
     String text,
     double cx,
