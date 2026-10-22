@@ -6,30 +6,15 @@ import 'cambodia_colors.dart';
 /// One ink on one field. Frame ratios are unmeasured; the photos show no clear
 /// frame line.
 abstract final class CambodiaThemes {
-  static final PlateTheme private = _ink(
-    CambodiaColors.white,
-    CambodiaColors.blue,
-  );
+  static final PlateTheme private = _ink(CambodiaColors.white, CambodiaColors.blue);
 
-  static final PlateTheme privateLong = _ink(
-    CambodiaColors.white,
-    CambodiaColors.navy,
-  );
+  static final PlateTheme privateLong = _ink(CambodiaColors.white, CambodiaColors.navy);
 
-  static final PlateTheme police = _ink(
-    CambodiaColors.white,
-    CambodiaColors.red,
-  );
+  static final PlateTheme police = _ink(CambodiaColors.white, CambodiaColors.red);
 
-  static final PlateTheme diplomatic = _ink(
-    CambodiaColors.mustard,
-    CambodiaColors.darkBlue,
-  );
+  static final PlateTheme diplomatic = _ink(CambodiaColors.mustard, CambodiaColors.darkBlue);
 
-  static final PlateTheme ngo = _ink(
-    CambodiaColors.ngoBlue,
-    CambodiaColors.offWhite,
-  );
+  static final PlateTheme ngo = _ink(CambodiaColors.ngoBlue, CambodiaColors.offWhite);
 
   static final PlateTheme internationalMotorcycle = _ink(
     CambodiaColors.paleBlue,

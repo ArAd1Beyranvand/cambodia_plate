@@ -77,9 +77,7 @@ abstract final class _Layout {
   );
 
   static const double khmerGlyph = 80, englishGlyph = 41;
-  static const double khmerBox = 300,
-      khmerBoxHeight = 84,
-      englishBoxWidth = 380;
+  static const double khmerBox = 300, khmerBoxHeight = 84, englishBoxWidth = 380;
 
   // Long plate.
   static const double longKhmerCx = 99.5, longKhmerCy = 57.5;
@@ -148,24 +146,12 @@ class _Builder {
   final List<PlateLabel> labels = <PlateLabel>[];
   final List<PlateRule> rules = <PlateRule>[];
 
-  void run(
-    String key,
-    PlateAlphabet alphabet,
-    int count,
-    double firstCx,
-    double pitch,
-    _Row row,
-  ) {
+  void run(String key, PlateAlphabet alphabet, int count, double firstCx, double pitch, _Row row) {
     groups.add(PlateTextGroup(<int>[slots.length], key: key));
     slots.add(
       PlateSlot(
         alphabet: alphabet,
-        box: PlateBox(
-          firstCx - pitch / 2,
-          row.cy - row.box / 2,
-          count * pitch,
-          row.box,
-        ),
+        box: PlateBox(firstCx - pitch / 2, row.cy - row.box / 2, count * pitch, row.box),
         length: count,
         spacing: max(0, pitch - 0.6 * 0.72 * row.box),
       ),
@@ -215,9 +201,7 @@ abstract final class CambodiaPlates {
     CambodiaCategory category, {
     CambodiaProvince province = CambodiaProvince.phnomPenh,
   }) {
-    final id = category.hasProvince
-        ? 'kh.${category.id}.${province.id}'
-        : 'kh.${category.id}';
+    final id = category.hasProvince ? 'kh.${category.id}.${province.id}' : 'kh.${category.id}';
     return _cache[id] ??= switch (category.design) {
       CambodiaDesign.captioned => _captioned(id, category, province),
       CambodiaDesign.long => _long(id, province),
@@ -239,13 +223,10 @@ abstract final class CambodiaPlates {
   static PlateSpec get police => of(CambodiaCategory.police);
   static PlateSpec get diplomatic => of(CambodiaCategory.diplomatic);
   static PlateSpec get nonGovernmental => of(CambodiaCategory.nonGovernmental);
-  static PlateSpec get internationalMotorcycle =>
-      of(CambodiaCategory.internationalMotorcycle);
+  static PlateSpec get internationalMotorcycle => of(CambodiaCategory.internationalMotorcycle);
 
   /// Every category; province plates are registered in Phnom Penh.
-  static List<PlateSpec> get all => <PlateSpec>[
-    for (final c in CambodiaCategory.values) of(c),
-  ];
+  static List<PlateSpec> get all => <PlateSpec>[for (final c in CambodiaCategory.values) of(c)];
 
   static PlateSpec _spec(String id, _Builder b, {double? height}) => PlateSpec(
     id: id,
@@ -260,11 +241,7 @@ abstract final class CambodiaPlates {
     textGroups: b.groups,
   );
 
-  static PlateSpec _captioned(
-    String id,
-    CambodiaCategory category,
-    CambodiaProvince province,
-  ) {
+  static PlateSpec _captioned(String id, CambodiaCategory category, CambodiaProvince province) {
     final police = category == CambodiaCategory.police;
     final l = police ? _Layout.police : _Layout.standard;
     final row = _Row(cy: l.cy, box: l.box);
@@ -273,14 +250,7 @@ abstract final class CambodiaPlates {
     if (!police) {
       b.run('letters', CambodiaAlphabets.letters, 1, l.lettersCx, l.pitch, row);
     }
-    b.run(
-      'serial',
-      CambodiaAlphabets.digits,
-      4,
-      l.serialCx,
-      l.serialPitch,
-      row,
-    );
+    b.run('serial', CambodiaAlphabets.digits, 4, l.serialCx, l.serialPitch, row);
     b.text(police ? '·' : '-', l.markCx, l.cy, l.pitch / 2, l.box, l.box);
     b.text(
       category.khmer.isEmpty ? province.khmer : category.khmer,
@@ -306,14 +276,7 @@ abstract final class CambodiaPlates {
   static PlateSpec _long(String id, CambodiaProvince province) {
     const row = _Row(cy: _Layout.longCy, box: _Layout.longBox);
     final b = _Builder();
-    b.run(
-      'class',
-      CambodiaAlphabets.digits,
-      1,
-      _Layout.longClassCx,
-      _Layout.longLettersPitch,
-      row,
-    );
+    b.run('class', CambodiaAlphabets.digits, 1, _Layout.longClassCx, _Layout.longLettersPitch, row);
     b.run(
       'letters',
       CambodiaAlphabets.letters,
@@ -322,14 +285,7 @@ abstract final class CambodiaPlates {
       _Layout.longLettersPitch,
       row,
     );
-    b.run(
-      'serial',
-      CambodiaAlphabets.digits,
-      4,
-      _Layout.longSerialCx,
-      _Layout.longPitch,
-      row,
-    );
+    b.run('serial', CambodiaAlphabets.digits, 4, _Layout.longSerialCx, _Layout.longPitch, row);
     b.text(
       '-',
       _Layout.longMarkCx,

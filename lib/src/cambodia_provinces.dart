@@ -54,26 +54,11 @@ class CambodiaProvince {
     'KAMPONG THOM',
   );
 
-  static const CambodiaProvince kampot = CambodiaProvince._(
-    'kampot',
-    'Kampot',
-    'កំពត',
-    'KAMPOT',
-  );
+  static const CambodiaProvince kampot = CambodiaProvince._('kampot', 'Kampot', 'កំពត', 'KAMPOT');
 
-  static const CambodiaProvince kandal = CambodiaProvince._(
-    'kandal',
-    'Kandal',
-    'កណ្ដាល',
-    'KANDAL',
-  );
+  static const CambodiaProvince kandal = CambodiaProvince._('kandal', 'Kandal', 'កណ្ដាល', 'KANDAL');
 
-  static const CambodiaProvince kep = CambodiaProvince._(
-    'kep',
-    'Kep',
-    'កែប',
-    'KEP',
-  );
+  static const CambodiaProvince kep = CambodiaProvince._('kep', 'Kep', 'កែប', 'KEP');
 
   static const CambodiaProvince kohKong = CambodiaProvince._(
     'koh_kong',
@@ -82,12 +67,7 @@ class CambodiaProvince {
     'KOH KONG',
   );
 
-  static const CambodiaProvince kratie = CambodiaProvince._(
-    'kratie',
-    'Kratie',
-    'ក្រចេះ',
-    'KRATIE',
-  );
+  static const CambodiaProvince kratie = CambodiaProvince._('kratie', 'Kratie', 'ក្រចេះ', 'KRATIE');
 
   static const CambodiaProvince mondulkiri = CambodiaProvince._(
     'mondulkiri',
@@ -103,12 +83,7 @@ class CambodiaProvince {
     'ODDAR MEANCHEY',
   );
 
-  static const CambodiaProvince pailin = CambodiaProvince._(
-    'pailin',
-    'Pailin',
-    'ប៉ែលិន',
-    'PAILIN',
-  );
+  static const CambodiaProvince pailin = CambodiaProvince._('pailin', 'Pailin', 'ប៉ែលិន', 'PAILIN');
 
   static const CambodiaProvince phnomPenh = CambodiaProvince._(
     'phnom_penh',
@@ -173,12 +148,7 @@ class CambodiaProvince {
     'SVAY RIENG',
   );
 
-  static const CambodiaProvince takeo = CambodiaProvince._(
-    'takeo',
-    'Takeo',
-    'តាកែវ',
-    'TAKEO',
-  );
+  static const CambodiaProvince takeo = CambodiaProvince._('takeo', 'Takeo', 'តាកែវ', 'TAKEO');
 
   static const CambodiaProvince tboungKhmum = CambodiaProvince._(
     'tboung_khmum',
