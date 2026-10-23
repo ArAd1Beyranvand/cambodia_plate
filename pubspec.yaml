@@ -1,7 +1,7 @@
 name: cambodia_plate
 description: "Cambodia's licence plates for the plate_core library — private, police, diplomatic and international-organisation plates, themes, alphabets, advisory validator."
 version: 0.1.0
-publish_to: none
+repository: https://github.com/ArAd1Beyranvand/cambodia_plate
 resolution: workspace
 
 environment:
