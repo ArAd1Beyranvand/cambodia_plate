@@ -10,7 +10,17 @@ https://platexample.ir/#/discover/cambodia
 
 # cambodia_plate
 
-Cambodia's licence plates for [`plate_core`](https://pub.dev/packages/plate_core) — private (short and long), police, diplomatic, non-governmental and international-organisation plates, themes, Latin alphabets and an advisory validator.
+Cambodia's licence plates for the `plate_core` library. Private (short and long), police, diplomatic, non-governmental and international-organisation plates, one theme each, Latin alphabets and an advisory validator per design. Colour is the theme; shape is the spec.
+
+## Install
+
+```yaml
+dependencies:
+  plate_core: ^0.12.0
+  cambodia_plate: ^0.1.0
+```
+
+## Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
@@ -21,47 +31,39 @@ PlateCanvas(
   theme: CambodiaThemes.private,
   validator: const CambodiaValidator(),
   autoValidate: true,
+  onChooseCharacter: noCharacterChooser,
 );
 ```
 
-## Also available
+## Contains
 
-- [`plate_core`](https://pub.dev/packages/plate-core) - Paint license plates.
-- [`plate_alphabet`](https://pub.dev/packages/plate-alphabet) - A library of alphabets for license plates.
-- [`plate_keypad`](https://pub.dev/packages/plate-keypad) - A character picker for license plates.
-- [`plate_number_holder`](https://pub.dev/packages/plate-number-holder) - A frame to hold license plate numbers.
-- [`algeria_plate`](https://pub.dev/packages/algeria-plate) - Algeria's licence plates.
-- [`angola_plate`](https://pub.dev/packages/angola-plate) - Angola's licence plates.
-- [`bolivia_plate`](https://pub.dev/packages/bolivia-plate) - Bolivia's licence plates.
-- [`brunei_plate`](https://pub.dev/packages/brunei-plate) - Brunei's licence plates.
-- [`burkina_faso_plate`](https://pub.dev/packages/burkina-faso-plate) - Burkina Faso's licence plates.
-- [`cambodia_plate`](https://pub.dev/packages/cambodia-plate) - Cambodia's licence plates.
-- [`chile_plate`](https://pub.dev/packages/chile-plate) - Chile's licence plates.
-- [`colombia_plate`](https://pub.dev/packages/colombia-plate) - Colombia's licence plates.
-- [`cuba_plate`](https://pub.dev/packages/cuba-plate) - Cuba's licence plates.
-- [`djibouti_plate`](https://pub.dev/packages/djibouti-plate) - Djibouti's licence plates.
-- [`eritrea_plate`](https://pub.dev/packages/eritrea-plate) - Eritrea's licence plates.
-- [`germany_plate`](https://pub.dev/packages/germany-plate) - Germany's licence plates.
-- [`india_plate`](https://pub.dev/packages/india-plate) - India's licence plates.
-- [`indonesia_plate`](https://pub.dev/packages/indonesia-plate) - Indonesia's licence plates.
-- [`iran_plate`](https://pub.dev/packages/iran-plate) - Iran's licence plates.
-- [`iranshahr_plate`](https://pub.dev/packages/iranshahr-plate) - Iranshahr region's licence plates.
-- [`italy_plate`](https://pub.dev/packages/italy-plate) - Italy's licence plates.
-- [`kyrgyzstan_plate`](https://pub.dev/packages/kyrgyzstan-plate) - Kyrgyzstan's licence plates.
-- [`laos_plate`](https://pub.dev/packages/laos-plate) - Laos's licence plates.
-- [`lebanon_plate`](https://pub.dev/packages/lebanon-plate) - Lebanon's licence plates.
-- [`malaysia_plate`](https://pub.dev/packages/malaysia-plate) - Malaysia's licence plates.
-- [`mali_plate`](https://pub.dev/packages/mali-plate) - Mali's licence plates.
-- [`myanmar_plate`](https://pub.dev/packages/myanmar-plate) - Myanmar's licence plates.
-- [`niger_plate`](https://pub.dev/packages/niger-plate) - Niger's licence plates.
-- [`palestine_plate`](https://pub.dev/packages/palestine-plate) - Palestine's licence plates.
-- [`republic_of_ireland_plate`](https://pub.dev/packages/republic-of-ireland-plate) - Republic of Ireland's licence plates.
-- [`slovenia_plate`](https://pub.dev/packages/slovenia-plate) - Slovenia's licence plates.
-- [`spain_plate`](https://pub.dev/packages/spain-plate) - Spain's licence plates.
-- [`sri_lanka_plate`](https://pub.dev/packages/sri-lanka-plate) - Sri Lanka's licence plates.
-- [`sudan_plate`](https://pub.dev/packages/sudan-plate) - Sudan's licence plates.
-- [`tunisia_plate`](https://pub.dev/packages/tunisia-plate) - Tunisia's licence plates.
-- [`venezuela_plate`](https://pub.dev/packages/venezuela-plate) - Venezuela's licence plates.
-- [`vietnam_plate`](https://pub.dev/packages/vietnam-plate) - Vietnam's licence plates.
-- [`yemen_plate`](https://pub.dev/packages/yemen-plate) - Yemen's licence plates.
-- [`zimbabwe_plate`](https://pub.dev/packages/zimbabwe-plate) - Zimbabwe's licence plates.
+- `CambodiaCountry` — country panel: `cambodia`.
+- `CambodiaPlates` — 7 plate specs: `private`, `privateLong`, `police`, `diplomatic`, `nonGovernmental`, `internationalMotorcycle`, `of()`.
+- `CambodiaThemes` — 6 themes: `private`, `privateLong`, `police`, `diplomatic`, `ngo`, `internationalMotorcycle`.
+- `CambodiaValidator` — advisory validator; flags the frame, never blocks a keystroke.
+- `CambodiaStackedValidator` — advisory validator; flags the frame, never blocks a keystroke.
+
+## Plates
+
+Cambodia's licence plates: three designs, six categories.
+
+* Captioned: Khmer name, then class digit, letter and four digits, a rule
+  and the English name. Groups `class`, `letters`, `serial`; the police
+  plate has no `letters`.
+* Long: the same registers with names on the left. Groups `class`,
+  `letters` (two), `serial`.
+* Stacked — two rows, no province. Corps diplomatique: `prefix` (CD),
+  `mission`, `serial`. Non-governmental: `prefix` (ONG), `org`, `class`,
+  `serial`. International motorcycle: `code`, `serial`.
+
+Pair each with its theme in `themeOf`.
+
+Not implemented, for want of a plate to sample: the class-3 blue,
+agricultural, engineering and trailer plates, the royal plate and the
+numbered state plates (រដ្ឋ-01 …). No flag is placed; none is printed on a
+photographed plate.
+
+## Part of plate
+
+Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
+
