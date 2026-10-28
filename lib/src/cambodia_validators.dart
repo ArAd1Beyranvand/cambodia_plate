@@ -2,7 +2,15 @@ import 'package:plate_core/plate_core.dart';
 
 /// Issued class digits: motorcycle 1, private car 2, large private car 3,
 /// agricultural 4, engineering 5, truck trailer 7, special 9.
-const Set<String> cambodiaClassDigits = <String>{'1', '2', '3', '4', '5', '7', '9'};
+const Set<String> cambodiaClassDigits = <String>{
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '7',
+  '9',
+};
 
 /// Judges a captioned or long plate: class digit, one or two letters when the
 /// plate has them, four digits. Reports, never bars a keystroke.

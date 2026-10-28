@@ -7,7 +7,13 @@ enum CambodiaDesign { captioned, long, stacked }
 /// A plate category: its design and what varies within one.
 @immutable
 class CambodiaCategory {
-  const CambodiaCategory._(this.id, this.name, this.design, {this.khmer = '', this.english = ''});
+  const CambodiaCategory._(
+    this.id,
+    this.name,
+    this.design, {
+    this.khmer = '',
+    this.english = '',
+  });
 
   final String id;
 
