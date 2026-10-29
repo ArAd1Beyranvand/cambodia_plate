@@ -12,6 +12,9 @@ const Set<String> cambodiaClassDigits = <String>{
   '9',
 };
 
+// TODO(py): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
+// TODO(ts): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
+// TODO(kt): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
 /// Judges a captioned or long plate: class digit, one or two letters when the
 /// plate has them, four digits. Reports, never bars a keystroke.
 class CambodiaValidator extends GatedPlateValidator {
