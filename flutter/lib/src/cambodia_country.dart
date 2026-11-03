@@ -6,7 +6,6 @@ import 'cambodia_colors.dart';
 abstract final class CambodiaCountry {
   static const PlateCountry cambodia = PlateCountry(
     code: 'kh',
-    captionLines: <String>[],
     panelColor: CambodiaColors.white,
     panelTextColor: CambodiaColors.blue,
   );

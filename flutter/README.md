@@ -6,13 +6,24 @@ GO VEGAN 🌱
 
 From the mighty people of Iran to the resilient people of Cambodia to view examples:
 
-https://platexample.ir/#/discover/cambodia
+https://platexample.ir/#/discover/cambodia:flutter
 
 # cambodia_plate
 
-Cambodia's licence plates for the `plate_core` library. Private (short and long), police, diplomatic, non-governmental and international-organisation plates, one theme each, Latin alphabets and an advisory validator per design. Colour is the theme; shape is the spec.
+Cambodia's licence plates for the plate_core library — private, police, diplomatic and international-organisation plates, themes, alphabets, advisory validator.
 
-## Install
+## Languages
+
+| Language | Folder | Example |
+| --- | --- | --- |
+| Flutter / Dart | [`flutter/`](https://github.com/ArAd1Beyranvand/cambodia_plate/tree/main/flutter) | [platexample](https://platexample.ir/#/discover/cambodia:flutter) |
+| Kotlin | [`kotlin/`](https://github.com/ArAd1Beyranvand/cambodia_plate/tree/main/kotlin) | [platexample](https://platexample.ir/#/discover/cambodia:kotlin) |
+| Python | [`python/`](https://github.com/ArAd1Beyranvand/cambodia_plate/tree/main/python) | [platexample](https://platexample.ir/#/discover/cambodia:python) |
+| TypeScript | [`typescript/`](https://github.com/ArAd1Beyranvand/cambodia_plate/tree/main/typescript) | [platexample](https://platexample.ir/#/discover/cambodia:typescript) |
+
+## Quick start
+
+### Install
 
 ```yaml
 dependencies:
@@ -20,7 +31,7 @@ dependencies:
   cambodia_plate: ^0.1.0
 ```
 
-## Use
+### Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
@@ -35,13 +46,35 @@ PlateCanvas(
 );
 ```
 
-## Contains
+## Specs
 
-- `CambodiaCountry` — country panel: `cambodia`.
-- `CambodiaPlates` — 7 plate specs: `private`, `privateLong`, `police`, `diplomatic`, `nonGovernmental`, `internationalMotorcycle`, `of()`.
-- `CambodiaThemes` — 6 themes: `private`, `privateLong`, `police`, `diplomatic`, `ngo`, `internationalMotorcycle`.
-- `CambodiaValidator` — advisory validator; flags the frame, never blocks a keystroke.
-- `CambodiaStackedValidator` — advisory validator; flags the frame, never blocks a keystroke.
+Each spec is one plate layout.
+
+- `CambodiaPlates.of`(…)
+- `CambodiaPlates.private`
+- `CambodiaPlates.privateLong`
+- `CambodiaPlates.police`
+- `CambodiaPlates.diplomatic`
+- `CambodiaPlates.nonGovernmental`
+- `CambodiaPlates.internationalMotorcycle`
+
+## Themes
+
+- `CambodiaThemes.private`
+- `CambodiaThemes.privateLong`
+- `CambodiaThemes.police`
+- `CambodiaThemes.diplomatic`
+- `CambodiaThemes.ngo`
+- `CambodiaThemes.internationalMotorcycle`
+
+## Change it
+
+`PlateCanvas` takes `spec:` (an entry of `CambodiaPlates`) and `theme:` (an entry of `CambodiaThemes`). Set `validator:` to `CambodiaValidator()` and `autoValidate: true` to show validation hints.
+
+## Also included
+
+- `CambodiaCountry` — the country panel.
+- `CambodiaValidator` — the plate validator.
 
 ## Plates
 
@@ -67,3 +100,6 @@ photographed plate.
 
 Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
 
+## License
+
+See [LICENSE](https://github.com/ArAd1Beyranvand/cambodia_plate/blob/main/LICENSE).

@@ -5,9 +5,6 @@
 /// advisory validator per design. Colour is the theme; shape is the spec.
 library;
 
-// TODO(py): [D5] one module `plates.countries.cambodia`; assets via importlib.resources.
-// TODO(ts): [D5] one subpath export `./countries/cambodia`; tree-shakable.
-// TODO(kt): [D5] package `countries.cambodia` in the countries module.
 export 'package:plate_alphabet/plate_alphabet.dart' show CambodiaAlphabets;
 
 export 'src/cambodia_colors.dart';

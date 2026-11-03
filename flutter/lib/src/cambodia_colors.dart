@@ -40,6 +40,4 @@ abstract final class CambodiaColors {
   /// Ink of both international-organisation plates: `F3F3F0` (car) and
   /// `F8F9FA` (motorcycle), the same white within the photos' error.
   static const Color offWhite = Color(0xFFF5F6F5);
-
-  static const Color inactive = Color(0xFFB0B0B0);
 }

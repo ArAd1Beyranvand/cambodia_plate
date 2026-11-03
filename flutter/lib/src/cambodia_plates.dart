@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/widgets.dart';
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
@@ -40,8 +38,7 @@ import 'cambodia_usage.dart';
 /// box cannot help. Khmer text is sized by height (stacked marks fix it) and a
 /// normal Khmer face runs narrower, so names ink short of the measured width.
 abstract final class _Layout {
-  static const double width = 520, height = 275;
-  static const double longHeight = 146;
+  static const double width = 520, height = 275, longHeight = 146;
 
   static const _Captioned standard = _Captioned(
     khmerCx: 257.4,
@@ -144,7 +141,6 @@ class _Row {
 
 class _Builder {
   final List<PlateSlot> slots = <PlateSlot>[];
-  final List<PlateTextGroup> groups = <PlateTextGroup>[];
   final List<PlateLabel> labels = <PlateLabel>[];
   final List<PlateRule> rules = <PlateRule>[];
 
@@ -156,18 +152,15 @@ class _Builder {
     double pitch,
     _Row row,
   ) {
-    groups.add(PlateTextGroup(<int>[slots.length], key: key));
     slots.add(
-      PlateSlot(
-        alphabet: alphabet,
-        box: PlateBox(
-          firstCx - pitch / 2,
-          row.cy - row.box / 2,
-          count * pitch,
-          row.box,
-        ),
-        length: count,
-        spacing: max(0, pitch - 0.6 * 0.72 * row.box),
+      plateRun(
+        alphabet,
+        count,
+        left: firstCx - pitch / 2,
+        top: row.cy - row.box / 2,
+        pitch: pitch,
+        height: row.box,
+        group: key,
       ),
     );
   }
@@ -183,7 +176,7 @@ class _Builder {
   }) => labels.add(
     PlateLabel(
       text: text,
-      box: PlateBox(cx - width / 2, cy - height / 2, width, height),
+      box: PlateBox.centered(cx, cy, width, height),
       glyphHeight: glyph,
       color: color,
     ),
@@ -252,12 +245,9 @@ abstract final class CambodiaPlates {
     country: CambodiaCountry.cambodia,
     canvasWidth: _Layout.width,
     canvasHeight: height ?? _Layout.height,
-    panel: const PlatePanel(box: PlateBox(0, 0, 0, 0)),
-    noPanel: true,
     slots: b.slots,
     labels: b.labels,
     rules: b.rules,
-    textGroups: b.groups,
   );
 
   static PlateSpec _captioned(

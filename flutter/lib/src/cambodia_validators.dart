@@ -12,16 +12,10 @@ const Set<String> cambodiaClassDigits = <String>{
   '9',
 };
 
-// TODO(py): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
-// TODO(ts): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
-// TODO(kt): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
 /// Judges a captioned or long plate: class digit, one or two letters when the
 /// plate has them, four digits. Reports, never bars a keystroke.
 class CambodiaValidator extends GatedPlateValidator {
-  const CambodiaValidator();
-
-  @override
-  String get gateGroup => 'serial';
+  const CambodiaValidator() : super('serial');
 
   static const String reasonClass =
       'The first number is not one of the article\'s vehicle classes.';
@@ -50,10 +44,7 @@ class CambodiaValidator extends GatedPlateValidator {
 /// mission; `ONG` + three-digit organisation and class digit; or a two-digit
 /// code on the motorcycle plate; each with a three-digit serial.
 class CambodiaStackedValidator extends GatedPlateValidator {
-  const CambodiaStackedValidator();
-
-  @override
-  String get gateGroup => 'serial';
+  const CambodiaStackedValidator() : super('serial');
 
   static const String reasonPrefix = 'The prefix is CD or ONG.';
   static const String reasonCode = 'The code is two or three digits.';

@@ -40,7 +40,6 @@ abstract final class CambodiaThemes {
 PlateTheme _ink(Color field, Color ink) => PlateTheme.monochrome(
   field: field,
   ink: ink,
-  inactive: CambodiaColors.inactive,
   borderWidthRatio: 0.015,
   plateRadiusRatio: 0.05,
 );
