@@ -1,4 +1,4 @@
-import { GatedPlateValidator, type PlateEntry, type PlateValidation, invalid, isDigitsOfLength, valid } from '../../core/validators/plate_validator';
+import { GatedPlateValidator, type PlateEntry, type PlateValidation, invalid, isDigitsOfLength, valid } from 'plate_core/core/validators/plate_validator';
 
 /** Issued class digits: motorcycle 1, private car 2, large private car 3, agricultural 4, engineering 5, truck trailer 7, special 9. */
 export const cambodiaClassDigits: ReadonlySet<string> = new Set(['1', '2', '3', '4', '5', '7', '9']);
